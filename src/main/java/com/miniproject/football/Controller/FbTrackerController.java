@@ -26,7 +26,7 @@ public class FbTrackerController {
          
         List<String> listTeams = Arrays.asList("Manchester City", "Chelsea", "Newcastle");
         model.addAttribute("listTeams", listTeams);
-         
+         String hello="hello";
         return "fbfavteam";
     }
 
