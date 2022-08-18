@@ -22,8 +22,8 @@ public class FbTrackerController {
     @Autowired
     private ParsingService parsingService;
 
-    @GetMapping("/fbfavteam")
-    public String fbfavteam(Model model, @ModelAttribute User user){
+    @GetMapping("/home")
+    public String whatever(Model model, @ModelAttribute User user){
        List<User> teams = (List<User>) parsingService.parse(JSON_CC_URL);
        model.addAttribute("teamList", teams);
        //note1: must be same name as in main.html iStat: ${}
@@ -31,7 +31,7 @@ public class FbTrackerController {
         
     }
     //@ModelAttribute User user, here the @modelattribute gets data from the form, put into the listCount, Country is the object
-    @PostMapping("/trackmyteam")
+    @PostMapping("/track")
     public String fbtrack(Model model, @ModelAttribute User userObject){
         //var selectedSR = model.addAttribute(subregion, subregion);
         model.addAttribute("user",new User());
