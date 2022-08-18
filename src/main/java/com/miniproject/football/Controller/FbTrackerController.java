@@ -1,37 +1,45 @@
 package com.miniproject.football.Controller;
-
-import java.util.Arrays;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import com.miniproject.football.Model.User;
+import com.miniproject.football.Service.ParsingService;
 
 @Controller
 public class FbTrackerController {
-
-    // @RequestMapping("/")
-    // public String showForm(){
-        
-    //     return "fbfavteam";
-    // }
-
-    @RequestMapping("/favouriteteam")
     
-    public String showForm(Model model) {
-        User user = new User();
-        model.addAttribute("user", user);
-         
-        List<String> listTeams = Arrays.asList("Manchester City", "Chelsea", "Newcastle");
-        model.addAttribute("listTeams", listTeams);
-         String hello="hello";
-        return "fbfavteam";
-    }
 
-    // @RequestMapping("/")
-    // public String showPage(){
-    //     return "footballtracker";
-    // }
+    //RestTemplate template = new RestTemplate();
+    private static final String JSON_CC_URL = "https://fixturedownload.com/feed/json/epl-2022";
+    
+
+    @Autowired
+    private ParsingService parsingService;
+
+    @GetMapping("/fbfavteam")
+    public String fbfavteam(Model model, @ModelAttribute User user){
+       List<User> teams = (List<User>) parsingService.parse(JSON_CC_URL);
+       model.addAttribute("teamList", teams);
+       //note1: must be same name as in main.html iStat: ${}
+        return "fbfavteam";
+        
+    }
+    //@ModelAttribute User user, here the @modelattribute gets data from the form, put into the listCount, Country is the object
+    @PostMapping("/trackmyteam")
+    public String fbtrack(Model model, @ModelAttribute User userObject){
+        //var selectedSR = model.addAttribute(subregion, subregion);
+        model.addAttribute("user",new User());
+        model.addAttribute("HomeTeam", userObject.getHomeTeam());
+        model.addAttribute("name", userObject.getName());
+        model.addAttribute("email", userObject.getEmail());
+        model.addAttribute("AwayTeamScore", userObject.getAwayTeamScore());
+        System.out.println(userObject.getHomeTeam());
+        return "trackmyteam";
+    }
 }

@@ -11,8 +11,8 @@
 
     <h4>Please choose your favourite EPL team to track</h4>
 
-    
-    <form action="#" th:action="@{/trackmyteam}" method="post" th:object="${user}">
+
+    <form action="#" th:action="@{/favouriteteam}" method="post" th:object="${user}">
 
             <label>Full name:</label>
             <input type="text" th:field="*{name}" />
@@ -23,19 +23,12 @@
         <br/>
         
             <label>Favourite Team:</label>
-            <select th:field="*{HomeTeam}">
-                <option th:value="${teams.HomeTeam}" th:each="teams, iStat : ${teamList}" >
-                    <span th:text="${teams.HomeTeam}">
-        
-                    </span>
-                </option>
-                <!-- <option th:each="p : ${teamList}" th:value="${p}" th:text="${p}" /> -->
+            <select th:field="*{teams}">
+                <option th:each="p : ${listTeams}" th:value="${p}" th:text="${p}" />
             </select>
         <br/>
             <button type="submit">Submit</button>
     </form>
-    <!-- <button type="submit" class="btn btn-warning btn-lg">
-        submit
-      </button> -->
+    
 </body>
 </html>

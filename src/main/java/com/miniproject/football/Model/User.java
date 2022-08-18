@@ -1,11 +1,32 @@
 package com.miniproject.football.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties
 public class User {
-    
+    public User() {
+    }
+    public User(int AwayTeamScore) {
+    }
     private String name;
     private String email;
-    private String teams;
-
+    private String HomeTeam;
+    private int AwayTeamScore;
+    
+    
+    
+    public int getAwayTeamScore() {
+        return AwayTeamScore;
+    }
+    public void setAwayTeamScore(int awayTeamScore) {
+        AwayTeamScore = awayTeamScore;
+    }
+    public String getHomeTeam() {
+        return HomeTeam;
+    }
+    public void setHomeTeam(String homeTeam) {
+        HomeTeam = homeTeam;
+    }
     public String getName() {
         return name;
     }
@@ -18,13 +39,7 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
-    public String getTeams() {
-        return teams;
-    }
-    public void setTeams(String teams) {
-        this.teams = teams;
-    }
-
+    
     // @Override
     // public String toString() {
     //     return this.name;

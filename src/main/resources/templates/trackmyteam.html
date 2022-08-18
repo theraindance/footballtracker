@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FB Tracker</title>
+</head>
+<body th:object="${user}">
+    <h2>Favourite Team: <label th:text="${HomeTeam}"></label> Tracker</h2>
+
+    <span>Full name: </span><label th:text="${name}"></label><br/>
+    <span>E-mail: </span><label th:text="${email}"></label><br/>
+    <span>Favourite team: </span><label th:text="${HomeTeam}"></label><br/>
+    <!-- <span>Lastest match score: </span><label th:text="${AwayTeamScore}"></label><br/> -->
+    
+
+    <form action="#" th:action="@{/fbfavteam}" method="get">
+    <button type="submit">Return to Home</button>
+    </form>
+</body>
+</html>
