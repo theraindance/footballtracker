@@ -4,17 +4,23 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties
 public class User {
+    
     public User() {
     }
-    public User(int AwayTeamScore) {
-    }
+    
     private String name;
     private String email;
     private String HomeTeam;
     private int AwayTeamScore;
+    private int RoundNumber;
+        
     
-    
-    
+    public int getRoundNumber() {
+        return RoundNumber;
+    }
+    public void setRoundNumber(int roundNumber) {
+        RoundNumber = roundNumber;
+    }
     public int getAwayTeamScore() {
         return AwayTeamScore;
     }
