@@ -26,6 +26,7 @@ public class FbTrackerController {
     public String whatever(Model model, @ModelAttribute User user){
        List<User> teams = (List<User>) parsingService.parse(JSON_CC_URL);
        model.addAttribute("teamList", teams);
+       System.out.println(teams);
        //note1: must be same name as in main.html iStat: ${}
         return "fbfavteam";
         
