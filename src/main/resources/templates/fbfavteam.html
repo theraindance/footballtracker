@@ -19,8 +19,8 @@
         h4 {font-family: 'Vast Shadow', cursive;}
         h6 {font-family: 'Happy Monkey', cursive;}
         h1 {font-family: 'Faster One', cursive;}
-
-        </style>
+        h1 {text-shadow: 5px 5px 3px #0b1501;}
+    </style>
 
     <title>FB Tracker</title>
 </head>
@@ -33,70 +33,87 @@
                 allow="autoplay;" allowfullscreen></iframe>
         
         </div>
+        <!-- background looping EPL clubs video. -->
+
+        <div class="container py-3">
+            <div class="row d-flex justify-content-center align-items-center">
+                <div class="col-xl-6">
+                    <h1 style="color:rgb(140, 214, 62)">EPL Football Tracker</h1>
+                </div>
+            </div>
+        </div>
         
-        <div class="container w-50">
-            <div class="row justify-content-center align-items-center">
-                <div class="card text-center" style="background:transparent;">
-                    <div class="card-header">
-                        <p></p>
-                        <p></p>
-                        <h1 style="color:rgb(10, 130, 120)">EPL Football Tracker</h1>
-                    </div>
-                    <p></p>
-                    <p></p>
-                    <p></p>
-                    <div class="p-md-4 mb-8 bg-secondary text-white" style="background:transparent;">
-                        <div>
-                            <img src="https://cf.shopee.com.co/file/4ca6017f61390ef7c327595aa9be51e4" width="80" height="80"/>
-                            <h4> EPL</h4>
-                            <h6>choose a favourite team to track!</h6>
+        <div class="container py-4 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-lg-8 col-xl-6">
+                    <div class="card" style="border-radius: 15px;">
+                        <div class="w-100 bg-success text-white" style="border-top-left-radius: .9rem; border-top-right-radius: .9rem;">
+                            <div class="text-center">
+                                <p></p>
+                                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/f/f2/Premier_League_Logo.svg/1920px-Premier_League_Logo.svg.png" width="200" height="80"/>
+                                <!-- <img src="https://cf.shopee.com.co/file/4ca6017f61390ef7c327595aa9be51e4" width="80" height="80"/> -->
+                                <!-- <h4> EPL</h4> -->
+                                <p></p>
+                                <h6>choose a favourite team to track!</h6>
+                                <p></p>
+                            </div>
                         </div>
 
-        <form action="#" th:action="@{/track}" method="post" th:object="${user}">
-                <p>
-                    <div class="row justify-content-center align-items-center ">
-                        <div class="col-md-6 mb-1">
-                            <label for="validationDefault01" class="form-label">Full name</label>
-                            <input type="text" th:field="*{name}" class="form-control" id="validationDefault01" placeholder="Please enter name" required>
-                        </div>
-                    </div>
-                <p class="w-100"></p>
-                    <div class="row justify-content-center align-items-center">
-                        <div class="col-md-6 mb-1">
-                            <label for="validationDefault02" class="form-label">E-mail</label>
-                            <input type="text" th:field="*{email}" class="form-control" id="validationDefault02" placeholder="Please enter E-mail" required>
-                        </div>
-                    </div>
-                <p class="w-100"></p>
-                    
-                    <div class="row justify-content-center align-items-center">
-                        <div class="col-md-6">
-                            <label for="validationDefault04" class="form-label">Favourite Team:</label>
-                                <select th:field="*{HomeTeam}" class="form-select" id="validationDefault04" required>
-                                
-                                    <option value="">Please select a Team</option>
+                        <form action="#" th:action="@{/track}" method="post" th:object="${user}">
+                                <p>
+                                    <div class="row justify-content-center align-items-center ">
+                                        <div class="col-md-6 mb-1">
+                                            <label for="validationDefault01" class="form-label">Full name</label>
+                                            <input type="text" th:field="*{name}" class="form-control" id="validationDefault01" placeholder="Please enter name" required>
+                                        </div>
+                                    </div>
+                                <p class="w-100"></p>
+                                    <div class="row justify-content-center align-items-center">
+                                        <div class="col-md-6 mb-1">
+                                            <label for="validationDefault02" class="form-label">E-mail</label>
+                                            <input type="email" th:field="*{email}" class="form-control" id="validationDefault02" placeholder="Please enter E-mail" required>
+                                        </div>
+                                    </div>
+                                <p class="w-100"></p>
+                                    
+                                    <div class="row justify-content-center align-items-center">
+                                        <div class="col-md-6">
+                                            <label for="validationDefault04" class="form-label">Favourite Team:</label>
+                                                <select th:field="*{HomeTeam}" class="form-select" id="validationDefault04" required>
+                                                
+                                                    <option value="">Please select a Team</option>
 
-                                        <option th:value="${teams.HomeTeam}" th:each="teams, iStat : ${teamList}">
-                                            <span th:text="${teams.HomeTeam}">
-                                            </span>
-                                        </option>
-                                </select>
-                        </div>
+                                                        <option th:value="${teams.HomeTeam}" th:each="teams, iStat : ${teamList}">
+                                                            <span th:text="${teams.HomeTeam}">
+                                                            </span>
+                                                        </option>
+                                                </select>
+                                        </div>
+                                    </div>
+                                </p>        
+                                    <div class="form-check d-flex justify-content-center mb-8 py-3">
+                                        <input class="form-check-input me-2" type="checkbox" value="" id="invalidCheck2" required>
+                                        <label>
+                                            Agree to terms and conditions
+                                        </label>
+                                    </div>
+                                    <div class="form-check d-flex justify-content-center mb-3">
+                                        <div class="col-md-3">
+                                            <button class="btn btn-primary" type="submit">Submit form</button>
+                                        </div>
+                                    </div>
+                        </form>
                     </div>
-                </p>        
-                    <div class="form-check d-flex justify-content-center mb-3 py-3">
-                        <input class="form-check-input me-2" type="checkbox" value="" id="invalidCheck2" required>
-                        <label>
-                            Agree to terms and conditions
-                        </label>
-                        </div>
-                    <div class="form-check d-flex justify-content-center mb-3">
-                        <div class="col-9">
-                            <button class="btn btn-primary" type="submit">Submit form</button>
-                        </div>
-                    </div>
-        </form>
-                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-check d-flex justify-content-center mb-3 py-12">
+            <div class="w-25 bg-success text-white" style="border-radius: 15px;">
+                <div class="text-center">
+                    <label>
+                        Already have an account? <a style="color:#b1c2a0" href="#">Sign in</a>
+                    </label>
                 </div>
             </div>
         </div>
