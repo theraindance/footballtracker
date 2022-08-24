@@ -1,6 +1,7 @@
 package com.miniproject.football.Controller;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import org.json.simple.parser.ParseException;
 
 import com.miniproject.football.Model.User;
 import com.miniproject.football.Service.ParsingService;
+import com.miniproject.football.Service.Service;
 
 @Controller
 public class FbTrackerController {
@@ -29,8 +31,16 @@ public class FbTrackerController {
     @GetMapping("/home")
     public String whatever(Model model, @ModelAttribute User user) throws FileNotFoundException, IOException, ParseException{
 
-        List<User> teams = (List<User>) parsingService.parse(JSON_CC_URL);
-        model.addAttribute("teamList", teams);
+        Service service = new Service();
+        service.getFootballTeams();
+        ArrayList<String> teamListing
+            = new ArrayList<>(service.getFootballTeams());
+        //System.out.println(teamListing);
+        String teams = String.join(" ", teamListing);
+        System.out.println(teams);
+
+        //List<User> teams = (List<User>) parsingService.parse(JSON_CC_URL);
+        model.addAttribute("teamListing", teams);
        //note1: must be same name as in main.html iStat: ${}
         return "fbfavteam";
         

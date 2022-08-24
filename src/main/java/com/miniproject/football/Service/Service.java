@@ -30,10 +30,12 @@ public class Service {
         for (JsonValue v : jsonArray){
             String homeTeam = v.asJsonObject().getString("HomeTeam");
             footBallSet.add(homeTeam);
+            //System.out.println(footBallSet);
         }
         // System.out.println(footBallSet.size());
         for (String s : footBallSet){
-             System.out.println(s);
+             //System.out.println(s);
+             String homeTeamList = s;
         }
 
         return footBallSet;
