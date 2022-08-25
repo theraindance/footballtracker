@@ -32,15 +32,16 @@ public class FbTrackerController {
     public String whatever(Model model, @ModelAttribute User user) throws FileNotFoundException, IOException, ParseException{
 
         Service service = new Service();
-        service.getFootballTeams();
-        ArrayList<String> teamListing
-            = new ArrayList<>(service.getFootballTeams());
+        List<String> footBallList = service.getFootballTeams();
+        System.out.println(footBallList);
+        // ArrayList<String> teamListing
+        //     = new ArrayList<>(service.getFootballTeams());
         //System.out.println(teamListing);
-        String teams = String.join(" ", teamListing);
-        System.out.println(teams);
+        //String teams = String.join(" ", teamListing);
+        //System.out.println(footBallList);
 
         //List<User> teams = (List<User>) parsingService.parse(JSON_CC_URL);
-        model.addAttribute("teamListing", teams);
+        model.addAttribute("teamlisting", footBallList);
        //note1: must be same name as in main.html iStat: ${}
         return "fbfavteam";
         

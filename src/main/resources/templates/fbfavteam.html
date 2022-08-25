@@ -83,8 +83,8 @@
                                                 
                                                     <option value="">Please select a Team</option>
 
-                                                        <option th:value="${teams.HomeTeam}" th:each="teams, iStat : ${teamList}">
-                                                            <span th:text="${teams.HomeTeam}">
+                                                        <option th:value="${team}" th:each="team:${teamlisting}">
+                                                            <span th:text="${team}">
                                                             </span>
                                                         </option>
                                                 </select>

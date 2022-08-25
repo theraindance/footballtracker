@@ -3,6 +3,7 @@ package com.miniproject.football.Service;
 import java.io.StringReader;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.http.ResponseEntity;
@@ -17,7 +18,7 @@ public class Service {
     RestTemplate template = new RestTemplate();
     String URL = "https://fixturedownload.com/feed/json/epl-2022";
 
-    public Set<String> getFootballTeams(){
+    public List<String> getFootballTeams(){
         ResponseEntity<String> responseEntity = template.getForEntity(URL, String.class);
         String payload = responseEntity.getBody();
         StringReader stringReader = new StringReader(payload);
@@ -25,6 +26,7 @@ public class Service {
         JsonArray jsonArray = jsonReader.readArray();
         //line 23 to 25, build to Json object or array, in order to get whatever you want
         Set<String> footBallSet = new HashSet<>();
+        
         //empty set for the footballteam to populate in using the for loop
         //in jsonArray, for every v, loop through v.
         for (JsonValue v : jsonArray){
@@ -37,8 +39,8 @@ public class Service {
              //System.out.println(s);
              String homeTeamList = s;
         }
-
-        return footBallSet;
+        List<String> footBallList = footBallSet.stream().toList();
+        return footBallList;
 
 
     }
