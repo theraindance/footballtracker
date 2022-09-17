@@ -10,37 +10,59 @@ public class User {
     private String name;
     private String email;
     private String HomeTeam;
-    private int AwayTeamScore;
-    private int RoundNumber;
+    // private String AwayTeam;
+    // private int AwayTeamScore;
+    // private int HomeTeamScore;
+    // private int RoundNumber;
      
-    public User(String name, String email, String HomeTeam) {
+    public User(String name, String email, String HomeTeam, String AwayTeam, int HomeTeamScore, int AwayTeamScore) {
         this.name=name;
         this.email=email;
         this.HomeTeam=HomeTeam;
+        // this.AwayTeam=AwayTeam;
+        // this.AwayTeamScore=AwayTeamScore;
     }
 
     public User(){
         
     }
     
-    public int getRoundNumber() {
-        return RoundNumber;
-    }
-    public void setRoundNumber(int roundNumber) {
-        RoundNumber = roundNumber;
-    }
-    public int getAwayTeamScore() {
-        return AwayTeamScore;
-    }
-    public void setAwayTeamScore(int awayTeamScore) {
-        AwayTeamScore = awayTeamScore;
-    }
+    // public int getRoundNumber() {
+    //     return RoundNumber;
+    // }
+    // public void setRoundNumber(int roundNumber) {
+    //     RoundNumber = roundNumber;
+    // }
+    
+    // public int getHomeTeamScore() {
+    //     return HomeTeamScore;
+    // }
+
+    // public void setHomeTeamScore(int homeTeamScore) {
+    //     HomeTeamScore = homeTeamScore;
+    // }
+
+    // public int getAwayTeamScore() {
+    //     return AwayTeamScore;
+    // }
+    // public void setAwayTeamScore(int awayTeamScore) {
+    //     AwayTeamScore = awayTeamScore;
+    // }
     public String getHomeTeam() {
         return HomeTeam;
     }
     public void setHomeTeam(String homeTeam) {
         HomeTeam = homeTeam;
     }
+    
+    // public String getAwayTeam() {
+    //     return AwayTeam;
+    // }
+
+    // public void setAwayTeam(String awayTeam) {
+    //     AwayTeam = awayTeam;
+    // }
+
     public String getName() {
         return name;
     }
@@ -53,6 +75,8 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    
     
     // @Override
     // public String toString() {

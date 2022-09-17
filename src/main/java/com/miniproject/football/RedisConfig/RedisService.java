@@ -26,6 +26,13 @@ public class RedisService implements RedisRepo {
         return userobject;
 
     }
+
+    // @Override
+    // public User delete(String deleteTeam){
+    //     User userobject = redisTemplate.opsForValue().getAndDelete(deleteTeam);
+    //     return userobject;
+    // }
+    
     // @Override
     // public Contact findById(final String contactId) {
     //     Contact result = (Contact) redisTemplate.opsForValue().get(contactId);
