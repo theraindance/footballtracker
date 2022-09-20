@@ -30,6 +30,8 @@ public class MatchTeam {
         //line 25 to 28, build to Json object or array, in order to get whatever you want
         //System.out.println(jsonArray.get(3));
         System.out.println(jsonArray.size());
+        String hello = userObject.getHomeTeam();
+        System.out.println();
         String all = "";
         
         try {

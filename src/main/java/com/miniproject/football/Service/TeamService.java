@@ -36,12 +36,12 @@ public class TeamService {
         
         //empty set for the footballteam to populate in using the "for" loop
         //in jsonArray, for every v, loop through v.
-        for (JsonValue v : jsonArray){
-            String homeTeam = v.asJsonObject().getString("HomeTeam");
+        for (JsonValue jv : jsonArray){
+            String homeTeam = jv.asJsonObject().getString("HomeTeam");
             footBallSet.add(homeTeam);
-            //System.out.println(footBallSet);
+            System.out.println("TeamService home team" + homeTeam);
         }
-        System.out.println(footBallSet.size());
+        System.out.println("TeamService match list size" +footBallSet.size());
         for (String s : footBallSet){
              //System.out.println(s);
              String homeTeamList = s;
@@ -53,6 +53,16 @@ public class TeamService {
 
 
     }
+}
+
+
+    // public static void main(String[] args) {
+	// 	List<String> footballTeams = new TeamService().getFootballTeams();
+	// 	for (String footballTeam : footballTeams) {
+	// 		System.out.println("footballTeam: " + footballTeam);
+	// 	}
+	// }
+
     // public List<String> getFootballMatchR(){
     //     ResponseEntity<String> responseEntity = template.getForEntity(URL, String.class);
     //     String payload = responseEntity.getBody();
@@ -89,4 +99,4 @@ public class TeamService {
 
     // }
     
-}
+

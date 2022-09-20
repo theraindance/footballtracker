@@ -1,5 +1,8 @@
 package com.miniproject.football.RedisConfig;
 
+import java.util.ArrayList;
+import java.util.Set;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +30,56 @@ public class RedisService implements RedisRepo {
 
     }
 
+    @Override
+    public User delete(String userName) {
+        User userobject = redisTemplate.opsForValue().getAndDelete(userName);
+        return userobject;
+
+    }
+
+    @Override
+    public ArrayList<String> getAllUsers() {
+        Set<String> tempUsers = redisTemplate.keys("*");
+        ArrayList<String> Users = new ArrayList<>();
+        for (String user:tempUsers){
+            Users.add(user);
+            //For every user in tempUsers, save in Users
+
+        }
+        return Users;
+
+    }
+
+    @Override
+    public ArrayList<String> getAllEmail() {
+        Set<String> tempUsersEmail = redisTemplate.keys("*");
+        ArrayList<String> Users = new ArrayList<>();
+        for (String user:tempUsersEmail){
+            User userobject = redisTemplate.opsForValue().get(user);
+            Users.add(userobject.getEmail());
+            //For every user in tempUsers, save in Users
+
+        }
+        return Users;
+
+    }
+
+    @Override
+    public ArrayList<String> getAllTeam() {
+        Set<String> tempUsersTeam = redisTemplate.keys("*");
+        ArrayList<String> Users = new ArrayList<>();
+        for (String user:tempUsersTeam){
+            User userobject = redisTemplate.opsForValue().get(user);
+            Users.add(userobject.getHomeTeam());
+            //For every user in tempUsers, save in Users
+
+        }
+        return Users;
+
+    }
+
+
+    
     // @Override
     // public User delete(String deleteTeam){
     //     User userobject = redisTemplate.opsForValue().getAndDelete(deleteTeam);

@@ -43,36 +43,49 @@
           <!-- <span>E-mail: </span><label th:text="${email}"></label><p></p> -->
           <span>List of EPL tracker Users </span><p></p>
           </br>
-          <h3>Favourite Team: <label th:text="${HomeTeam}"></label> Tracker</h3>
-
-          <label th:text="${HomeTeam}"></label>
           
-          <!-- <table class="table">
-              <thead>
+          <div class="col-md-12">
+            <table class="table table-hover">
+                <thead>
                 <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Name</th>
-                  <th scope="col">Favourite Team</th>
+                    <th class="col-sm-2 center">No</th>
+                    <th class="col-sm-4 center">Name</th>
+                    <th class="col-sm-6 center">email</th>
+                    <th class="col-sm-8 center">email</th>
                 </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td><label th:text="${name}">Arsenal</label></td>
-                  <td><label th:text="${HomeTeam}"></label></td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td><label th:text="${name}">Chelsea</label></td>
-                  <td><label th:text="${HomeTeam}"></label></td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td><label th:text="${name}">Manchester City</label></td>
-                  <td><label th:text="${HomeTeam}"></label></td>
-                </tr>
-              </tbody>
-          </table> -->
+                </thead>
+
+                <tbody>
+                  <tbody>
+                    <!-- <tr th:each="${userList}"> -->
+                        <!-- <td th:text="${Users.Name}"></td>
+                        <td th:text="${Users.Email}"></td>
+                        <td th:text="${Users.HomeTeam}"></td> -->
+                    </tr>
+                </tbody>
+                  
+                  <tr><ol><td>Hello3</td><td>Hello4</td><td>Hello5</td><td>Hello6</td><td>Hello7</td></tr>
+                  <tr><td>Hello2</td></tr>
+                  <td class="col-sm-2 center">
+                      <td>
+                        <h6 th:each=" eachUser: ${userList}">
+                          <tr th:text="${eachUser}"></tr>
+                        </h6>
+                        </td>
+                        <td>
+                        <h6 th:each=" eachUser: ${emailList}">
+                          <tr th:text="${eachUser}"></tr>
+                        </h6>
+                      </td>
+                  </td>
+                </tbody>
+                
+            </table>
+            <li th:each=" eachUser: ${emailList}">
+              <span th:text="${eachUser}"></span>
+            </li>
+          </div>
+    
       </div>
   </div>
   <br/>

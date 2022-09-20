@@ -28,7 +28,7 @@ public class MatchResult {
         JsonArray jsonArray = jsonReader.readArray();       
         //line 25 to 28, build to Json object or array, in order to get whatever you want
         //System.out.println(jsonArray.get(3));
-        System.out.println(jsonArray.size());
+        System.out.println("MatchResult jsonArray size" + jsonArray.size());
         String all = "";
         
         try {

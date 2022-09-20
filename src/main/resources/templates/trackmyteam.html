@@ -34,7 +34,7 @@
                 allow="autoplay;" allowfullscreen></iframe>
         
         </div> -->
-        <div class="container py-4">
+        <div class="container-fluid py-4">
             <div class="row d-flex justify-content-center align-items-center">
                 <div class="col-lg-8 col-xl-6">
                     <div class="card" style="border-radius: 25px;">
@@ -47,11 +47,12 @@
                     <br/>
 
                     <!-- <div class="row justify-content-center align-items-center"> -->
-                    <div class="d-flex justify-content-center mb-3">
-                        <div class="col-md-6 mb-2">
+                    <div class="d-flex justify-content-md-center mb-3">
+                        <div class="col-md-8 mb-2">
+                            <!-- md adjust width -->
                             <span>Hello </span><label th:text="${name}"></label><p></p>
                             <!-- <span>E-mail: </span><label th:text="${email}"></label><p></p> -->
-                            <span>Here is </span><label th:text="${HomeTeam}"></label><span>'s latest results </span><p></p>
+                            <span>Here are </span><label th:text="${HomeTeam}"></label><span>'s latest Premier League results </span><p></p>
                             </br>
                             <!-- <script>var mytable = "<table cellpadding=\"0\" cellspacing=\"0\"><tbody><tr>";
 
@@ -70,7 +71,7 @@
                                 
                                 <thead>
                                   <tr>
-                                    <th scope="col">#</th>
+                                    <th scope="col">Match Number</th>
                                     <th scope="col">Home</th>
                                     <th scope="col">Score</th>
                                     <th scope="col">Away</th>
@@ -138,6 +139,7 @@
                         </div>
                     </form>
 
+                    
                     <!-- <p>
                         <span th:text="List of matches"></span>
                         </p>
