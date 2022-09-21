@@ -38,54 +38,57 @@
                   </div>
                   <br/>
 
-  <div class="d-flex justify-content-center mb-6">
-      <div class="col-md-8 mb-2">
-          <!-- <span>E-mail: </span><label th:text="${email}"></label><p></p> -->
-          <span>List of EPL tracker Users </span><p></p>
-          </br>
-          
-          <div class="col-md-12">
-            <table class="table table-hover">
-                <thead>
-                <tr>
-                    <th class="col-sm-2 center">No</th>
-                    <th class="col-sm-4 center">Name</th>
-                    <th class="col-sm-6 center">email</th>
-                    <th class="col-sm-8 center">email</th>
-                </tr>
-                </thead>
+                  <div class="row d-flex justify-content-center mb-6">
+                      <div class="col-md-8 mb-2">
+                          <span>List of EPL tracker Users </span><p></p>
+                          </br>
+                          
+                          <div class="col-md-12">
+                            <table class="table table-hover">
+                                <thead>
+                                <tr>
+                                    <th class="col-sm-4 center">Name</th>
+                                    <!-- <th class="col-sm-4 center">E-mail</th> -->
+                                    <th class="col-sm-10 center">Favourite Team</th>
+                                </tr>
+                                </thead>
 
-                <tbody>
-                  <tbody>
-                    <!-- <tr th:each="${userList}"> -->
-                        <!-- <td th:text="${Users.Name}"></td>
-                        <td th:text="${Users.Email}"></td>
-                        <td th:text="${Users.HomeTeam}"></td> -->
-                    </tr>
-                </tbody>
-                  
-                  <tr><ol><td>Hello3</td><td>Hello4</td><td>Hello5</td><td>Hello6</td><td>Hello7</td></tr>
-                  <tr><td>Hello2</td></tr>
-                  <td class="col-sm-2 center">
-                      <td>
-                        <h6 th:each=" eachUser: ${userList}">
-                          <tr th:text="${eachUser}"></tr>
-                        </h6>
-                        </td>
-                        <td>
-                        <h6 th:each=" eachUser: ${emailList}">
-                          <tr th:text="${eachUser}"></tr>
-                        </h6>
-                      </td>
-                  </td>
-                </tbody>
-                
-            </table>
-            <li th:each=" eachUser: ${emailList}">
-              <span th:text="${eachUser}"></span>
-            </li>
+                                <!-- HTML Tags	Descriptions
+                                        <table>	Define a table
+                                        <tr>	Define a table row
+                                        <td>	Define a table cell
+                                        <th>	Define a table header cell
+                                        <thead>	Define a group of a table header
+                                        <tbody>	Define a group of a table body
+                                        <tfooter>	Define a group of a table footer -->
+                                    <tbody th:each=" user: ${userList}">
+                                      <ol>
+                                        <td>
+                                          <h6>
+                                            <h6 th:text="${user.name}"></h6>
+                                          </h6>
+                                        </td>
+                                        <!-- <td>
+                                          <h6>
+                                            <h6 th:text="${user.email}"></h6>
+                                          </h6>
+                                        </td> -->
+                                        <td>
+                                          <h6>
+                                            <h6 th:text="${user.HomeTeam}"></h6>
+                                          </h6>
+                                        </td>
+                                      </ol>
+                                    </tbody>
+
+                                      
+                            </table>
+                          </div>
+                    
+                      </div>
+                  </div>
+              </div>
           </div>
-    
       </div>
   </div>
   <br/>

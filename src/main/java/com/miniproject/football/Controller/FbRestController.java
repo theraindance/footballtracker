@@ -1,21 +1,14 @@
 package com.miniproject.football.Controller;
 
-import java.net.URI;
-import java.util.ArrayList;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fasterxml.jackson.core.sym.Name;
 import com.miniproject.football.Model.User;
 import com.miniproject.football.RedisConfig.RedisService;
 
@@ -30,7 +23,7 @@ public class FbRestController {
 
         @GetMapping("/track/{username}/{email}")
         public ResponseEntity userId(@PathVariable String username, String email, String Hometeam){
-            String URI = "/track/username";
+            //String URI = "/track/username";
             try {
                 
                 User userx = rs.get(username);
@@ -42,7 +35,7 @@ public class FbRestController {
                 JsonObject body = builder.build();
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body(body.toString());
                 //TODO: handle exception
-                
+
             }
             
             

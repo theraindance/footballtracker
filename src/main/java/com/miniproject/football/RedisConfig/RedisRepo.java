@@ -8,7 +8,7 @@ import com.miniproject.football.Model.User;
 public interface RedisRepo {
     public void save(User theUser);
     public User get(String userName);
-    public ArrayList<String> getAllUsers();
+    public ArrayList<User> getAllUsers();
     public ArrayList<String> getAllEmail();
     public ArrayList<String> getAllTeam();
     public User delete(String userName);

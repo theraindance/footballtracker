@@ -79,14 +79,20 @@
                                   </tr>
                                 </thead>
                                 <tbody>
-                                  <tr>
-                                    <th scope="row">1</th>
-                                    <td><label th:text="${HomeTeamName0}"></label></td>
-                                    <td><label th:text="${HomeTeamScore0}"></label></td>
-                                    <td><label th:text="${AwayTeamName0}"></label></td>
-                                    <td><label th:text="${AwayTeamScore0}"></label></td>
+                                  <tr th:each="favMatch, iterStat : ${matches}">
+                                    <th scope="row"><span th:text=${iterStat.count}></span></th>
+                                    <td><label th:text="${favMatch.HomeTeam}"></label></td>
+                                    <td><label th:text="${favMatch.HomeTeamScore}"></label></td>
+                                    <td><label th:text="${favMatch.AwayTeam}"></label></td>
+                                    <td><label th:text="${favMatch.AwayTeamScore}"></label></td>
                                   </tr>
-                                  <tr>
+                                  <!-- <tr th:each="favMatch : ${matches}">
+                                    <td><label th:text="${favMatch.HomeTeam}"></label></td>
+                                    <td><label th:text="${favMatch.AwayTeam}"></label></td>
+                                    <td><label th:text="${favMatch.HomeTeamScore}"></label></td>
+                                    <td><label th:text="${favMatch.AwayTeamScore}"></label></td>
+                                  </tr> -->
+                                  <!-- <tr>
                                     <th scope="row">2</th>
                                     <td><label th:text="${HomeTeamName1}"></label></td>
                                     <td><label th:text="${HomeTeamScore1}"></label></td>
@@ -120,7 +126,14 @@
                                     <td><label th:text="${HomeTeamScore5}"></label></td>
                                     <td><label th:text="${AwayTeamName5}"></label></td>
                                     <td><label th:text="${AwayTeamScore5}"></label></td>
-                                  </tr>
+                                  </tr> -->
+                                  <!-- <tr>
+                                    <th scope="row">7</th>
+                                    <td><label th:text="${HomeTeamName6}"></label></td>
+                                    <td><label th:text="${HomeTeamScore6}"></label></td>
+                                    <td><label th:text="${AwayTeamName6}"></label></td>
+                                    <td><label th:text="${AwayTeamScore6}"></label></td>
+                                  </tr> -->
                                 </tbody>
                             </table>
                         </div>

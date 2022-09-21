@@ -23,6 +23,7 @@
 
     <title>Sign In</title>
 </head>
+
 <body th:object="${user}" oncopy="return false" onpaste="return false" oncut="return false">
         <div class="container py-4">
             <div class="row d-flex justify-content-center align-items-center">
@@ -34,7 +35,8 @@
                             </div>
                         </div>
                         <br/>
-                            <form action="#" th:action="@{/track}" method="post" th:object="${user}">
+                        <form action="#" th:action="@{/track2}" method="post" th:object="${user}">
+                            <!-- <form action="#" th:action="@{/track}" method="post" th:object="${user}"> -->
                                 <p>
                                     <div class="row justify-content-center align-items-center">
                                         <div class="col-md-6 mb-2">

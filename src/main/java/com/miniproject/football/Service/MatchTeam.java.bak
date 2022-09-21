@@ -1,12 +1,12 @@
 package com.miniproject.football.Service;
 import java.io.StringReader;
+import java.util.List;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.client.RestTemplate;
 
-import com.miniproject.football.Model.Match;
 import com.miniproject.football.Model.User;
 
 import jakarta.json.Json;
@@ -27,40 +27,15 @@ public class MatchTeam {
         JsonReader jsonReader = Json.createReader(stringReader);
         //read an JSON array from a string
         JsonArray jsonArray = jsonReader.readArray();
-        // System.out.println(jsonArray);      
+        
+        System.out.println(jsonArray);      
         //line 25 to 28, build to Json object or array, in order to get whatever you want
         //System.out.println(jsonArray.get(3));
         System.out.println(jsonArray.size());
-        // String hello = userObject.getHomeTeam();
-        // System.out.println();
+        String hello = userObject.getHomeTeam();
+        System.out.println();
         String all = "";
-        if (Match.matches.isEmpty()){
-        try {
-            for (int j = 0; j < jsonArray.size(); j++){
-                JsonObject obj = jsonArray.getJsonObject(j);
-                Match match = new Match();
-                match.setHomeTeam(obj.getString("HomeTeam"));
-                match.setAwayTeam(obj.getString("AwayTeam"));
-                if (obj.get("HomeTeamScore")==null){
-                    // System.out.println("Home team score is null");
-                }
-                else{
-                    Integer homeTeamScore = (Integer) obj.getInt("HomeTeamScore");
-                    match.setHomeTeamScore(homeTeamScore.toString());
-                    Integer awayTeamScore = (Integer) obj.getInt("AwayTeamScore");
-                    match.setAwayTeamScore(awayTeamScore.toString());
-                }
-                // match.setAwayTeamScore(obj.getInt("AwayTeamScore"));
-                match.setLocation(obj.getString("Location"));
-                match.setRoundNumber(obj.getInt("RoundNumber"));
-                Match.matches.add(match);
-                System.out.println("Match Info: " + match.toString());
-            }
-            
-        } catch (Exception e) {
-            // TODO: handle exception
-        }
-    }
+        
         try {
         for(int i = 0; i < jsonArray.size(); i++) {  
               

@@ -10,7 +10,8 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import com.miniproject.football.Model.User;
-
+//List<User> userList;
+//object
 @Service
 public class RedisService implements RedisRepo {
     private static final Logger logger = LoggerFactory.getLogger(User.class);
@@ -38,13 +39,13 @@ public class RedisService implements RedisRepo {
     }
 
     @Override
-    public ArrayList<String> getAllUsers() {
+    public ArrayList<User> getAllUsers() {
         Set<String> tempUsers = redisTemplate.keys("*");
-        ArrayList<String> Users = new ArrayList<>();
+        ArrayList<User> Users = new ArrayList<>();
         for (String user:tempUsers){
-            Users.add(user);
+            User userObj = get(user);
+            Users.add(userObj);
             //For every user in tempUsers, save in Users
-
         }
         return Users;
 
