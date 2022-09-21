@@ -13,5 +13,5 @@ jobs:
       - uses: akhileshns/heroku-deploy@v3.12.12 ## this is the action
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: "dry-everglades-39897" ## replace with new link from heroku
+          heroku_app_name: "boiling-brook-52073" ## replace with new link from heroku
           heroku_email: "contrastinglife@gmail.com"
