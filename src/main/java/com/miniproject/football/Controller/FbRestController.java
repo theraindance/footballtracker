@@ -27,7 +27,14 @@ public class FbRestController {
             try {
                 
                 User userx = rs.get(username);
-                   return ResponseEntity.ok().contentType(MediaType.APPLICATION_JSON).body(userx);
+                JsonObjectBuilder builder = Json.createObjectBuilder();
+                builder.add("Name:",userx.getName());
+                builder.add("Email:",userx.getEmail());
+                builder.add("HomeTeam:",userx.getHomeTeam());
+                
+                JsonObject body = builder.build();
+
+                   return ResponseEntity.ok().contentType(MediaType.APPLICATION_JSON).body(body.toString());
                 
             } catch (Exception e) {
                 JsonObjectBuilder builder = Json.createObjectBuilder();

@@ -37,6 +37,7 @@ public class RedisConfig {
     @Scope("singleton")
 //save object into redis, redis will be database of objects, objects will become JSON
     public RedisTemplate<String, User> redisTemplate() {
+        System.out.println("Here is redis: "+redisHost);
         final RedisStandaloneConfiguration config = new RedisStandaloneConfiguration();
         config.setHostName(redisHost);
         config.setPort(redisPort.get());
