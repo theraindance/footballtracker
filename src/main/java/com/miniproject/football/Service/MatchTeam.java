@@ -34,55 +34,97 @@ public class MatchTeam {
         // String hello = userObject.getHomeTeam();
         // System.out.println();
         String all = "";
+
+
         if (Match.matches.isEmpty()){
-        try {
             for (int j = 0; j < jsonArray.size(); j++){
                 JsonObject obj = jsonArray.getJsonObject(j);
                 Match match = new Match();
                 match.setHomeTeam(obj.getString("HomeTeam"));
                 match.setAwayTeam(obj.getString("AwayTeam"));
-                if (obj.get("HomeTeamScore")==null){
-                    // System.out.println("Home team score is null");
+                try{
+                    if (obj.get("HomeTeamScore")==null){
+                        // System.out.println("Home team score is null");
+                    }
+                    else{
+                        Integer homeTeamScore = (Integer) obj.getInt("HomeTeamScore");
+                        match.setHomeTeamScore(homeTeamScore.toString());
+                        Integer awayTeamScore = (Integer) obj.getInt("AwayTeamScore");
+                        match.setAwayTeamScore(awayTeamScore.toString());
+                    }
                 }
-                else{
-                    Integer homeTeamScore = (Integer) obj.getInt("HomeTeamScore");
-                    match.setHomeTeamScore(homeTeamScore.toString());
-                    Integer awayTeamScore = (Integer) obj.getInt("AwayTeamScore");
-                    match.setAwayTeamScore(awayTeamScore.toString());
+                catch (Exception e){
+                    //if HomeTeamScore is null, dont add the match, just continue to search for more
+                    //matche where score is not null
+                    continue;
                 }
-                // match.setAwayTeamScore(obj.getInt("AwayTeamScore"));
                 match.setLocation(obj.getString("Location"));
                 match.setRoundNumber(obj.getInt("RoundNumber"));
                 Match.matches.add(match);
-                System.out.println("Match Info: " + match.toString());
+                System.out.println("Match + " + j + " Info: " + match.toString());
             }
-            
-        } catch (Exception e) {
-            // TODO: handle exception
-        }
+            System.out.println("FINISHED CALLING API");
+            System.out.println("MATCH SIZE: " + Match.matches.size());
     }
-        try {
-        for(int i = 0; i < jsonArray.size(); i++) {  
-              
-            // store each object in JSONObject  
-            JsonObject obj = jsonArray.getJsonObject(i);
-            //System.out.println(jsonArray.getJsonObject(0));
-            if(userObject.getHomeTeam().equals(obj.getString("HomeTeam"))||userObject.getHomeTeam().equals(obj.getString("AwayTeam"))) {
-            
-                String htName = obj.getString("HomeTeam");
-                if (htName != null){
-                String hm=String.valueOf(htName)+", ";
-                all += hm;}
 
-                String atName = obj.getString("AwayTeam");
-                if (atName != null){
-                String aw=String.valueOf(atName)+", ";
-                all += aw;}
-            }  
-        }  
-                } catch (Exception e) {
+
+
+
+
+
+
+
+
+
+    //     if (Match.matches.isEmpty()){
+    //     try {
+    //         for (int j = 0; j < jsonArray.size(); j++){
+    //             JsonObject obj = jsonArray.getJsonObject(j);
+    //             Match match = new Match();
+    //             match.setHomeTeam(obj.getString("HomeTeam"));
+    //             match.setAwayTeam(obj.getString("AwayTeam"));
+    //             if (obj.get("HomeTeamScore")==null){
+    //                 // System.out.println("Home team score is null");
+    //             }
+    //             else{
+    //                 Integer homeTeamScore = (Integer) obj.getInt("HomeTeamScore");
+    //                 match.setHomeTeamScore(homeTeamScore.toString());
+    //                 Integer awayTeamScore = (Integer) obj.getInt("AwayTeamScore");
+    //                 match.setAwayTeamScore(awayTeamScore.toString());
+    //             }
+    //             // match.setAwayTeamScore(obj.getInt("AwayTeamScore"));
+    //             match.setLocation(obj.getString("Location"));
+    //             match.setRoundNumber(obj.getInt("RoundNumber"));
+    //             Match.matches.add(match);
+    //             System.out.println("Match Info: " + match.toString());
+    //         }
+            
+    //     } catch (Exception e) {
+    //         // TODO: handle exception
+    //     }
+    // }
+    //     try {
+    //     for(int i = 0; i < jsonArray.size(); i++) {  
+              
+    //         // store each object in JSONObject  
+    //         JsonObject obj = jsonArray.getJsonObject(i);
+    //         //System.out.println(jsonArray.getJsonObject(0));
+    //         if(userObject.getHomeTeam().equals(obj.getString("HomeTeam"))||userObject.getHomeTeam().equals(obj.getString("AwayTeam"))) {
+            
+    //             String htName = obj.getString("HomeTeam");
+    //             if (htName != null){
+    //             String hm=String.valueOf(htName)+", ";
+    //             all += hm;}
+
+    //             String atName = obj.getString("AwayTeam");
+    //             if (atName != null){
+    //             String aw=String.valueOf(atName)+", ";
+    //             all += aw;}
+    //         }  
+    //     }  
+    //             } catch (Exception e) {
                     
-                }
+    //             }
         return all;
                     
     }
