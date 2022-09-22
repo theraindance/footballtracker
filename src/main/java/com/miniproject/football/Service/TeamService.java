@@ -39,7 +39,7 @@ public class TeamService {
         for (JsonValue jv : jsonArray){
             String homeTeam = jv.asJsonObject().getString("HomeTeam");
             footBallSet.add(homeTeam);
-            System.out.println("TeamService home team" + homeTeam);
+            //System.out.println("TeamService home team" + homeTeam);
         }
         System.out.println("TeamService match list size" +footBallSet.size());
         for (String s : footBallSet){

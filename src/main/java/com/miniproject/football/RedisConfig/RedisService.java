@@ -32,6 +32,40 @@ public class RedisService implements RedisRepo {
     }
 
     @Override
+    public User checkuserexist(String userName, String email) {
+            if(redisTemplate.hasKey(userName)){
+                System.out.println("exist!!!!!!!!");
+                User userobject = redisTemplate.opsForValue().get(userName);
+                System.out.println(userobject.getEmail().toString());
+                System.out.println(email.toString());
+                if(userobject.getEmail().toString().equals(email.toString())){
+                    System.out.println("exist email");
+                    return userobject;
+                }
+                else{
+                    System.out.println("email DON'T exist");
+                    return userobject = null;
+                }
+        }
+        else{
+            System.out.println("name DON'T exist");
+            User userobject = null;
+            return userobject;
+        }
+    }
+
+    // @Override
+    // public User checkemail(String email) {
+    //         redisTemplate.hasKey(email);
+    //             //System.out.println("exist");
+    //             User userobjectemail = redisTemplate.opsForValue().get(email);
+    //         return userobjectemail;
+               
+    // }
+
+    
+
+    @Override
     public User delete(String userName) {
         User userobject = redisTemplate.opsForValue().getAndDelete(userName);
         return userobject;

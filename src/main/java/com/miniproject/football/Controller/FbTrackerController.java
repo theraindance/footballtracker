@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -261,33 +262,80 @@ public class FbTrackerController {
 
     @PostMapping("/track2")
         public String track2(Model model, @ModelAttribute User userObject){
-            User userobj = rs.get(userObject.getName());
-            if(userobj.getName().equals(userObject.getName()) 
-            && userobj.getEmail().equals(userObject.getEmail()))
-            {
-                model.addAttribute("user",new User());
-                model.addAttribute("HomeTeam", userobj.getHomeTeam());
-                model.addAttribute("name", userobj.getName());
-                model.addAttribute("email", userobj.getEmail());
+
+            User usernewobj = rs.checkuserexist(userObject.getName(), userObject.getEmail());
+            //System.out.println(usernewobj.toString());
+            
+            if(usernewobj == null)
+            {   
+               
+                return "erroruser";
+           }
+
+           System.out.println("running below code");
+                        model.addAttribute("user",new User());
+                        model.addAttribute("HomeTeam", usernewobj.getHomeTeam());
+                        model.addAttribute("name", usernewobj.getName());
+                        model.addAttribute("email", usernewobj.getEmail());
+            
+                    System.out.println("Retrieved user: " + usernewobj.getName()) ;
+                    MatchTeam selectMT = new MatchTeam();
+                    String selectTeam = selectMT.getTeamName(model, usernewobj);
+                    String favoriteTeam = usernewobj.getHomeTeam();
+                    System.out.println("Fav team: " + favoriteTeam);
+                    List<Match> matches = Match.matches;
+                    System.out.println("Matches size: " + matches.size());
+                    List<Match> favoriteMatches = new ArrayList();
+                    for (Match match : matches){
+                        if (match.getHomeTeam().equals(favoriteTeam) || match.getAwayTeam().equals(favoriteTeam)){
+                            favoriteMatches.add(match);
+                        }
+                    }
+                    model.addAttribute("matches", favoriteMatches);
+            
+                    //List<String> teamname = Arrays.asList(selectTeam.split(", "));
+                
+                    return "trackmyteam";
+                    
+           
+
+        //    if(!userobjemail.getEmail().equals(userObject.getEmail()))
+        //     {
+        //         return "error";
+        //    }
+
+        //    if(!usernewobj.getName().equals(userObject.getName()))
+        //     {
+        //         return "error";
+        //    }
+
+            // (usernewobj.getName().equals(userObject.getName()) 
+            // && userobjemail.getEmail().equals(userObject.getEmail()))
+            
+            //     model.addAttribute("user",new User());
+            //     model.addAttribute("HomeTeam", usernewobj.getHomeTeam());
+            //     model.addAttribute("name", usernewobj.getName());
+            //     model.addAttribute("email", usernewobj.getEmail());
     
-            System.out.println("Retrieved user: " + userobj.getName()) ;
-            MatchTeam selectMT = new MatchTeam();
-            String selectTeam = selectMT.getTeamName(model, userobj);
-            String favoriteTeam = userobj.getHomeTeam();
-            System.out.println("Fav team: " + favoriteTeam);
-            List<Match> matches = Match.matches;
-            System.out.println("Matches size: " + matches.size());
-            List<Match> favoriteMatches = new ArrayList();
-            for (Match match : matches){
-                if (match.getHomeTeam().equals(favoriteTeam) || match.getAwayTeam().equals(favoriteTeam)){
-                    favoriteMatches.add(match);
-                }
-            }
-            model.addAttribute("matches", favoriteMatches);
+            // System.out.println("Retrieved user: " + usernewobj.getName()) ;
+            // MatchTeam selectMT = new MatchTeam();
+            // String selectTeam = selectMT.getTeamName(model, usernewobj);
+            // String favoriteTeam = usernewobj.getHomeTeam();
+            // System.out.println("Fav team: " + favoriteTeam);
+            // List<Match> matches = Match.matches;
+            // System.out.println("Matches size: " + matches.size());
+            // List<Match> favoriteMatches = new ArrayList();
+            // for (Match match : matches){
+            //     if (match.getHomeTeam().equals(favoriteTeam) || match.getAwayTeam().equals(favoriteTeam)){
+            //         favoriteMatches.add(match);
+            //     }
+            // }
+            // model.addAttribute("matches", favoriteMatches);
     
-            List<String> teamname = Arrays.asList(selectTeam.split(", "));
-        }
-        return "trackmyteam";
+            // List<String> teamname = Arrays.asList(selectTeam.split(", "));
+        
+        
+      
         }
 
     @GetMapping("/signinform")

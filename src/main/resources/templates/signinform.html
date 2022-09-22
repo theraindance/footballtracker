@@ -44,6 +44,11 @@
                                             <input type="text" th:field="*{name}" class="form-control" id="validationDefault01" placeholder="Please enter name" required>
                                         </div>
                                     </div>
+                                    <!-- <div th:each=" user: ${userList}">
+                                    <div th:if="${user.name != null}" class="alert alert-danger notification" role="alert">
+                                        <p th:text="${user.name}"></p><p> already exists</p>
+                                     </div>
+                                    </div> -->
                                 <p class="w-100"></p>
                                     <div class="row justify-content-center align-items-center">
                                         <div class="col-md-6 mb-2">
@@ -60,6 +65,8 @@
                                     
                                     
                             </form>
+
+                            
                             
                             <form action="#" th:action="@{/userlist}" method="get">
                                 <div class="d-flex justify-content-center mb-4 col-4 mx-auto">
