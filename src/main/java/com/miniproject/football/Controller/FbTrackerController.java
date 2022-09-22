@@ -1,9 +1,7 @@
 package com.miniproject.football.Controller;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,10 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.miniproject.football.Model.Match;
 import com.miniproject.football.Model.User;
 import com.miniproject.football.RedisConfig.RedisService;
-//import com.miniproject.football.Service.AwayMatchResult;
-import com.miniproject.football.Service.MatchResult;
 import com.miniproject.football.Service.MatchTeam;
-//import com.miniproject.football.Service.ScoreService;
 import com.miniproject.football.Service.TeamService;
 
 @Controller
@@ -264,7 +259,6 @@ public class FbTrackerController {
         public String track2(Model model, @ModelAttribute User userObject){
 
             User usernewobj = rs.checkuserexist(userObject.getName(), userObject.getEmail());
-            //System.out.println(usernewobj.toString());
             
             if(usernewobj == null)
             {   
@@ -292,74 +286,17 @@ public class FbTrackerController {
                         }
                     }
                     model.addAttribute("matches", favoriteMatches);
-            
-                    //List<String> teamname = Arrays.asList(selectTeam.split(", "));
                 
                     return "trackmyteam";
-                    
-           
-
-        //    if(!userobjemail.getEmail().equals(userObject.getEmail()))
-        //     {
-        //         return "error";
-        //    }
-
-        //    if(!usernewobj.getName().equals(userObject.getName()))
-        //     {
-        //         return "error";
-        //    }
-
-            // (usernewobj.getName().equals(userObject.getName()) 
-            // && userobjemail.getEmail().equals(userObject.getEmail()))
-            
-            //     model.addAttribute("user",new User());
-            //     model.addAttribute("HomeTeam", usernewobj.getHomeTeam());
-            //     model.addAttribute("name", usernewobj.getName());
-            //     model.addAttribute("email", usernewobj.getEmail());
-    
-            // System.out.println("Retrieved user: " + usernewobj.getName()) ;
-            // MatchTeam selectMT = new MatchTeam();
-            // String selectTeam = selectMT.getTeamName(model, usernewobj);
-            // String favoriteTeam = usernewobj.getHomeTeam();
-            // System.out.println("Fav team: " + favoriteTeam);
-            // List<Match> matches = Match.matches;
-            // System.out.println("Matches size: " + matches.size());
-            // List<Match> favoriteMatches = new ArrayList();
-            // for (Match match : matches){
-            //     if (match.getHomeTeam().equals(favoriteTeam) || match.getAwayTeam().equals(favoriteTeam)){
-            //         favoriteMatches.add(match);
-            //     }
-            // }
-            // model.addAttribute("matches", favoriteMatches);
-    
-            // List<String> teamname = Arrays.asList(selectTeam.split(", "));
-        
-        
-      
         }
 
     @GetMapping("/signinform")
     public String signin(Model model, @ModelAttribute User User){
-        //below is from database
-        // User userobj = rs.get(userObject.getName());
-        // if(userobj.getName().equals(userObject.getName())){
-        //     System.out.println("access granted");
-        // }
-        // User userobj = rs.get(userObject.getName());
-        // User userobj, this is from redis db
-        // userObject.getName(), this is from user submittion from signin form
-        
-
-        // TeamService service = new TeamService();
-        // List<String> footBallList = service.getFootballTeams();
-        // model.addAttribute("teamlisting", footBallList);
         return "signinform";
     }
 
     @GetMapping("/userlist")
     public String listofuser(Model model, @ModelAttribute User userObject){
-        //TeamService service = new TeamService();
-        //List<Integer> matchList = service.getFootballMatchR();
 
         ArrayList<User> Users = rs.getAllUsers();
         ArrayList<String> UsersEmail = rs.getAllEmail();
@@ -368,19 +305,7 @@ public class FbTrackerController {
         model.addAttribute("userList",Users);
         model.addAttribute("emailList",UsersEmail);
         model.addAttribute("teamList",UsersTeam);
-        // model.addAttribute("user",new User());
-        // model.addAttribute("HomeTeam", userObject.getHomeTeam());
-        // model.addAttribute("name", userObject.getName());
         
         return "userlist";
     }
-
-    
-    // @RequestMapping("/trackmyteam")
-    // private String listMatches(Model model, @ModelAttribute User user){
-    //   model.addAttribute("trackmyteam", user.getHomeTeamScore());
-    //   return "trackmyteam";
-  	// }
-
-    
 }

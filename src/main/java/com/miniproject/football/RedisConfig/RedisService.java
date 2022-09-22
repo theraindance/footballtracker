@@ -10,8 +10,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import com.miniproject.football.Model.User;
-//List<User> userList;
-//object
+
 @Service
 public class RedisService implements RedisRepo {
     private static final Logger logger = LoggerFactory.getLogger(User.class);
@@ -53,17 +52,6 @@ public class RedisService implements RedisRepo {
             return userobject;
         }
     }
-
-    // @Override
-    // public User checkemail(String email) {
-    //         redisTemplate.hasKey(email);
-    //             //System.out.println("exist");
-    //             User userobjectemail = redisTemplate.opsForValue().get(email);
-    //         return userobjectemail;
-               
-    // }
-
-    
 
     @Override
     public User delete(String userName) {
