@@ -24,6 +24,14 @@
 
     <title>List of Users</title>
 </head>
+<div style="position: fixed; z-index: -99; width: 100%; height: 100%">
+  <iframe height="100%" width="100%" 
+      src="https://www.youtube.com/embed/5fJ4HNsiRDk?controls=0&loop=1&autoplay=1&mute=1&playlist=5fJ4HNsiRDk" 
+      title="YouTube video player" 
+      frameborder="0"
+      allow="autoplay;" allowfullscreen></iframe>
+
+</div>
 
 <body th:object="${user}" oncopy="return false" onpaste="return false" oncut="return false">
   <div class="container py-4">
@@ -92,5 +100,14 @@
       </div>
   </div>
   <br/>
+  <div class="form-check d-flex justify-content-center py-4 me-5">
+    <div class="w-25 bg-success text-white" style="border-radius: 15px;">
+        <div class="text-center">
+            <label>
+                Return to Sign Up? <a style="color:#b1c2a0" th:href="@{/home}">Click Here</a>
+            </label>
+        </div>
+    </div>
+</div>
 </body>
 </html>
